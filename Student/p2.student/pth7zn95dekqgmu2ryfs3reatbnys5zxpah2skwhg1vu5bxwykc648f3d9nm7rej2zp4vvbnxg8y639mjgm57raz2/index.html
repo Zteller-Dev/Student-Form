@@ -44,19 +44,28 @@
                     </select>
             </div> 
             <div class="mb-15">
-                <select id="secondDropdown" name="faculty" class="custom-select" oninput="this.className = ''">
+                <select id="secondDropdown" name="faculty" class="custom-select" oninput="updateDepartments()">
                     <option value="" selected disabled>Select Faculty</option>
-                    <option value="Physical Science" >Physical Science</option>
-                    <!-- Add more options as needed -->
+                    <option value="agriculture">Agriculture</option>
+                    <option value="arts">Arts</option>
+                    <option value="education">Education</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="law">Law</option>
+                    <option value="lifeSciences">Life Sciences</option>
+                    <option value="managementScience">Management Science</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="physicalScience">Physical Science</option>
+                    <option value="socialScience">Social Science</option>
+                    <option value="collegeOfMedicine">College of Medicine</option>
+                    <option value="veterinaryMedicine">Veterinary Medicine</option>
                 </select>
             </div>
             <div class="mb-15">
                 <select id="thirdDropdown" name="department" class="custom-select" oninput="this.className = ''">
                     <option value="" selected disabled>Select Department</option>
-                    <option value="Computer Science" >Computer Science</option>
-                    <!-- Add more options as needed -->
                 </select>
             </div>
+            
             <div class="mb-15">
                 <select id="fourthDropdown" name="level" class="custom-select" oninput="this.className = ''">
                     <option value="" selected disabled>Select Level</option>
@@ -124,12 +133,17 @@
       </form>        
       
       
+     
+      
+
+
 
   
         <script src="./script.js"></script>
     </body>
    
 </html>
+
 
 
 
