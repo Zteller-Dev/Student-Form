@@ -17,7 +17,10 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   //... and run a function that will display the correct step indicator:
-  fixStepIndicator(n)
+  fixStepIndicator(n);
+  if (n == 2) {
+    populateReviewSection();
+  }
 }
 
 function nextPrev(n) {
@@ -174,6 +177,17 @@ const departmentsByFaculty = {
   ]
 };
 
+const associationsByDepartment = {
+  "Department of Crop Science (CRS)": ["Crop Science Association"],
+  "Department of Animal Science (ANS)": ["Animal Science Society"],
+  "Department of Agricultural Economics": ["Agricultural Economics Club"],
+  "Department of Soil Science & Land Management (SLM)": ["Soil Science Association"],
+  "Department of Forest Resources & Wildlife Management (FOW)": ["Forestry and Wildlife Association"],
+  "Department of Aquaculture & Fisheries Management (AFM)": ["Aquaculture Society"],
+  "Food Science and Nutrition (FSN)": ["Food Science Association"],
+  // Add associations for other departments...
+};
+
 function updateDepartments() {
   const facultySelect = document.getElementById('secondDropdown');
   const departmentSelect = document.getElementById('thirdDropdown');
@@ -192,6 +206,21 @@ function updateDepartments() {
     option.textContent = department;
     departmentSelect.appendChild(option);
   });
+}
+
+function updateAssociations() {
+  const departmentInput = document.getElementById('thirdDropdown');
+  const associationInput = document.getElementById('fourthDropdown');
+  const selectedDepartment = departmentInput.value;
+
+  // Get the corresponding associations
+  const associations = associationsByDepartment[selectedDepartment] || [];
+
+  // Clear previous associations
+  associationInput.value = ''; // Clear the input field for association
+
+  // If there are associations, you can provide a way to select from them or just input manually
+  // Here we assume user will manually input the association
 }
 
 $(document).ready(function() {
@@ -223,6 +252,7 @@ $(document).ready(function() {
   $('#thirdDropdown').change(function() {
     if ($(this).val()) {
       $('#fourthDropdown').prop('disabled', false);
+      updateAssociations(); // Update the fourth dropdown based on the third dropdown's value
     } else {
       $('#fourthDropdown, #fifthDropdown').prop('disabled', true);
     }
@@ -236,3 +266,72 @@ $(document).ready(function() {
     }
   });
 });
+
+function populateReviewSection() {
+  var reviewSection = document.getElementById("reviewSection");
+  reviewSection.innerHTML = ''; // Clear previous content
+
+  var formElements = document.getElementById("signUpForm").elements;
+
+  for (var i = 0; i < formElements.length; i++) {
+    if (formElements[i].type !== "button" && formElements[i].type !== "submit") {
+      var elementName = formElements[i].name;
+      var elementValue = formElements[i].value;
+
+      if (formElements[i].type === "radio" && !formElements[i].checked) {
+        continue;
+      }
+
+      var elementLabel;
+      switch (elementName) {
+        case 'school':
+          elementLabel = 'School';
+          break;
+        case 'faculty':
+          elementLabel = 'Faculty';
+          break;
+        case 'department':
+          elementLabel = 'Department';
+          break;
+        case 'association':
+          elementLabel = 'Association';
+          break;
+        case 'level':
+          elementLabel = 'Level';
+          break;
+        case 'payment':
+          elementLabel = 'Payment For';
+          break;
+        case 'surname':
+          elementLabel = 'Surname';
+          break;
+        case 'firstname':
+          elementLabel = 'Firstname';
+          break;
+        case 'othername':
+          elementLabel = 'Othername';
+          break;
+        case 'email':
+          elementLabel = 'Email';
+          break;
+        case 'phone':
+          elementLabel = 'Phone';
+          break;
+        case 'matno':
+          elementLabel = 'Matric No';
+          break;
+        case 'gender':
+          elementLabel = 'Gender';
+          break;
+        default:
+          elementLabel = elementName;
+      }
+
+      if (elementValue) {
+        var p = document.createElement("p");
+        p.innerHTML = `<div id="display"><strong style="margin-right:5px;" >${elementLabel}:</strong> ${elementValue}</div>`;
+        reviewSection.appendChild(p);
+      }
+    }
+  }
+}
