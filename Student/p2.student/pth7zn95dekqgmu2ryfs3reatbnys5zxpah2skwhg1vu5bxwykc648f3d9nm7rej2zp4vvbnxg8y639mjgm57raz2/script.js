@@ -267,6 +267,69 @@ $(document).ready(function() {
   });
 });
 
+
+function updateAssociations() {
+  var faculty = document.getElementById("secondDropdown").value;
+  var associationDropdown = document.getElementById("association");
+
+  var associations = {
+    agriculture: [
+
+      { value: "NAAS", text: "National Association of Agriculture Students (NAAS)" },
+      { value: "NAAEES", text: "National Association of Agric Extension Students (NAAEES)" },
+      { value: "ASSAN", text: "Animal Science Student Association of Nigeria (ASSAN)" },
+      { value: "NAFIS", text: "National Association of Fishery Students (NAFIS)" },
+      { value: "CROSSAN", text: "Crop Science Student Association of Nigeria (CROSSAN)" }
+    ],
+    socialScience: [
+      { value: "SOSSA", text: "Social Sciences Students Association (SOSSA)" },
+      { value: "NAPSS", text: "National Association of Political Science Students (NAPSS)" },
+      { value: "NASOWS", text: "National Association of Social Work Students (NASOWS)" },
+      { value: "PASAN", text: "Public Administration Student Association (PASAN)" },
+      { value: "NSASA", text: "National Sociology and Anthropology Association (NSASA)" },
+      { value: "GARPSAN", text: "Geography and Regional Planning Students Association (GARPSAN)" }
+    ],
+    managementScience: [
+      { value: "MASSA", text: "Management Sciences Students Association (MASSA)" },
+      { value: "NUASA", text: "Nigeria Universities Accounting Students Association (NUASA)" },
+      { value: "NUAMBS", text: "Nigeria Universities Association of Management and Business Students (NUAMBS)" },
+      { value: "NINSA", text: "Nigerian Insurance Student Association (NINSA)" },
+      { value: "NAMS", text: "National Association of Marketing Students (NAMS)" },
+      { value: "NAHRMS", text: "National Association of Human Resource Management Students (NAHRMS)" },
+      { value: "FINSAN", text: "Finance Students Association of Nigeria (FINSAN)" }
+    ],
+    physicalScience: [
+      { value: "FAPSSA", text: "Faculty of Physical Science Students Association (FAPSSA)" },
+      { value: "NACOS", text: "National Association of Computing Students (NACOS)" },
+      { value: "NAPS", text: "National Association of Physics Students (NAPS)" },
+      { value: "NAMSN", text: "National Association of Mathematics Students of Nigeria (NAMSN)" },
+      { value: "SCSN", text: "Students Chemical Society of Nigeria (SCSN)" },
+      { value: "NASSON", text: "National Association of Statistics Students of Nigeria (NASSON)" },
+      { value: "NMGS", text: "Nigeria Mining and Geosciences Society (NMGS)" }
+    ],
+    environmentalScience: [
+      { value: "FESSA", text: "Faculty of Enviromental Sciences Students Association (FESSA)" },
+      { value: "EMSA", text: "Estate Management Students Association (EMSA)" },
+      { value: "NIGS", text: "Nigerian Institute of Geomatics Students (NIGS)" },
+      { value: "NAFAS", text: "National Association of Fine Art Students (NAFAS)" },
+      { value: "NAQSS", text: "National Association of Quantity Survey Students (NAQSS)" }
+    ]
+    // Add other faculties and associations as needed
+  };
+
+  associationDropdown.innerHTML = '<option value="" selected disabled>Select Association</option>';
+
+  if (faculty in associations) {
+    associations[faculty].forEach(function(association) {
+      var option = document.createElement("option");
+      option.value = association.value;
+      option.text = association.text;
+      associationDropdown.add(option);
+    });
+  }
+}
+
+
 function populateReviewSection() {
   var reviewSection = document.getElementById("reviewSection");
   reviewSection.innerHTML = ''; // Clear previous content
