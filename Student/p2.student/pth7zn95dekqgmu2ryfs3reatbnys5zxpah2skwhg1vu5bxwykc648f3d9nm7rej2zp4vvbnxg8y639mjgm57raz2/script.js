@@ -1,3 +1,5 @@
+
+
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
@@ -18,8 +20,8 @@ function showTab(n) {
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n);
-  if (n == 2) {
-    populateReviewSection();
+   if (n == 2) {
+   populateReviewSection();
   }
 }
 
@@ -35,11 +37,14 @@ function nextPrev(n) {
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
-    document.getElementById("signUpForm").submit();
+    // document.getElementById("signUpForm").submit();
+    
+    submitForm();
     return false;
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
+  
 }
 
 function allDropdownsSelected() {
@@ -54,7 +59,11 @@ function allDropdownsSelected() {
     }
   }
   return true;
+
+  
 }
+
+
 
 function validateForm() {
   // This function deals with validation of the form fields
@@ -267,7 +276,6 @@ $(document).ready(function() {
   });
 });
 
-
 function updateAssociations() {
   var faculty = document.getElementById("secondDropdown").value;
   var associationDropdown = document.getElementById("association");
@@ -328,7 +336,6 @@ function updateAssociations() {
     });
   }
 }
-
 
 function populateReviewSection() {
   var reviewSection = document.getElementById("reviewSection");
@@ -398,3 +405,5 @@ function populateReviewSection() {
     }
   }
 }
+
+
