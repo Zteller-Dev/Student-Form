@@ -234,7 +234,7 @@ function updateAssociations() {
 
 $(document).ready(function() {
   // Initially, disable all dropdowns except the first one
-  $('#secondDropdown, #thirdDropdown, #fourthDropdown, #fifthDropdown').prop('disabled', true);
+  $('#secondDropdown, #thirdDropdown, #fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
 
   // Listen for change events on the first dropdown
   $('#firstDropdown').change(function() {
@@ -244,7 +244,7 @@ $(document).ready(function() {
       $('#secondDropdown').prop('disabled', false);
     } else {
       // If no value is selected, disable the second dropdown and subsequent ones
-      $('#secondDropdown, #thirdDropdown, #fourthDropdown, #fifthDropdown').prop('disabled', true);
+      $('#secondDropdown, #thirdDropdown, #fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
     }
   });
 
@@ -253,7 +253,7 @@ $(document).ready(function() {
     if ($(this).val()) {
       $('#thirdDropdown').prop('disabled', false);
     } else {
-      $('#thirdDropdown, #fourthDropdown, #fifthDropdown').prop('disabled', true);
+      $('#thirdDropdown, #fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
     }
     updateDepartments(); // Update the third dropdown based on the second dropdown's value
   });
@@ -263,7 +263,7 @@ $(document).ready(function() {
       $('#fourthDropdown').prop('disabled', false);
       updateAssociations(); // Update the fourth dropdown based on the third dropdown's value
     } else {
-      $('#fourthDropdown, #fifthDropdown').prop('disabled', true);
+      $('#fourthDropdown, #fifthDropdown,#association').prop('disabled', true);
     }
   });
 
@@ -271,7 +271,14 @@ $(document).ready(function() {
     if ($(this).val()) {
       $('#fifthDropdown').prop('disabled', false);
     } else {
-      $('#fifthDropdown').prop('disabled', true);
+      $('#fifthDropdown, #association').prop('disabled', true);
+    }
+  });
+  $('#fifthDropdown').change(function() {
+    if ($(this).val()) {
+      $('#association').prop('disabled', false);
+    } else {
+      $('#association').prop('disabled', true);
     }
   });
 });
