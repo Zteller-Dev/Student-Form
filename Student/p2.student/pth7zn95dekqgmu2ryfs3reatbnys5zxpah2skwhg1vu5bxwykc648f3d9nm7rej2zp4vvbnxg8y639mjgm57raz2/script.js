@@ -65,6 +65,7 @@ function allDropdownsSelected() {
 
 
 
+
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -234,7 +235,7 @@ function updateAssociations() {
 
 $(document).ready(function() {
   // Initially, disable all dropdowns except the first one
-  $('#secondDropdown, #thirdDropdown, #fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
+  $('#secondDropdown, #thirdDropdown, #entry-mode, #fourthDropdown,  #fifthDropdown, #association').prop('disabled', true);
 
   // Listen for change events on the first dropdown
   $('#firstDropdown').change(function() {
@@ -244,7 +245,7 @@ $(document).ready(function() {
       $('#secondDropdown').prop('disabled', false);
     } else {
       // If no value is selected, disable the second dropdown and subsequent ones
-      $('#secondDropdown, #thirdDropdown, #fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
+      $('#secondDropdown, #thirdDropdown, #entry-mode, #fourthDropdown,  #fifthDropdown, #association').prop('disabled', true);
     }
   });
 
@@ -253,20 +254,27 @@ $(document).ready(function() {
     if ($(this).val()) {
       $('#thirdDropdown').prop('disabled', false);
     } else {
-      $('#thirdDropdown, #fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
+      $('#thirdDropdown, #entry-mode, #fourthDropdown,  #fifthDropdown,  #association').prop('disabled', true);
     }
     updateDepartments(); // Update the third dropdown based on the second dropdown's value
   });
 
   $('#thirdDropdown').change(function() {
     if ($(this).val()) {
-      $('#fourthDropdown').prop('disabled', false);
+      $('#entry-mode').prop('disabled', false);
       updateAssociations(); // Update the fourth dropdown based on the third dropdown's value
     } else {
-      $('#fourthDropdown, #fifthDropdown,#association').prop('disabled', true);
+      $(' #entry-mode, #fourthDropdown,  #fifthDropdown, #association').prop('disabled', true);
     }
   });
 
+  $('#entry-mode').change(function() {
+    if ($(this).val()) {
+      $('#fourthDropdown').prop('disabled', false);
+    } else {
+      $('#fourthDropdown, #fifthDropdown, #association').prop('disabled', true);
+    }
+  });
   $('#fourthDropdown').change(function() {
     if ($(this).val()) {
       $('#fifthDropdown').prop('disabled', false);
@@ -375,6 +383,12 @@ function populateReviewSection() {
           break;
         case 'level':
           elementLabel = 'Level';
+          break;
+        case 'entry':
+          elementLabel = 'Entry Mode';
+          break;
+        case 'student-type':
+          elementLabel = 'Student Type';
           break;
         case 'payment':
           elementLabel = 'Payment For';
