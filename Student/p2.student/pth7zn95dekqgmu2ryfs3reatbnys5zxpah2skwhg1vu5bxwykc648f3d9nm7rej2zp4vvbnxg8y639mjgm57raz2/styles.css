@@ -36,6 +36,11 @@
     border-radius: 5px;
     background: rgb(65, 170, 94); 
 }
+#the-radio{
+    display: flex;
+   
+}
+
 
         #signUpForm .form-header {
             display: flex;

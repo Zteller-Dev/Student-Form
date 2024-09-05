@@ -126,7 +126,16 @@ function submitForm() {
                     <option value="" selected disabled>Select Department</option>
                 </select>
             </div>
-            
+            <div class="mb-15">        
+                <select id="entry-mode" name="entry" oninput="this.className = ''">
+                    <option value="" selected disabled>Entry Mode</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Direct Entry">Direct Entry</option>
+                    <option value="Part-Time">Part-Time</option>
+                   
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
             <div class="mb-15">
                 <select id="fourthDropdown" name="level" class="custom-select" oninput="this.className = ''">
                     <option value="" selected disabled>Select Level</option>
@@ -134,6 +143,8 @@ function submitForm() {
                     <option value="200L" >200L</option>
                     <option value="300L" >300L</option>
                     <option value="400L" >400L</option>
+                    <option value="500L" >500L</option>
+                    <option value="600L" >600L</option> 
                     <!-- Add more options as needed -->
                 </select>
             </div>
@@ -169,14 +180,42 @@ function submitForm() {
                 <input type="text" placeholder="Othername" oninput="this.className = ''" name="othername">
             </div>
             <div class="mb-15">
-                <input type="email" placeholder="Email Address" oninput="this.className = ''" name="email">
+                <input 
+                    type="email" 
+                    placeholder="Email Address" 
+                    oninput="this.className = ''" 
+                    name="email" 
+                    pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" 
+                    required>
             </div>
+            
+            
             <div class="mb-15">
-                <input type="number" placeholder="Phone Number" oninput="this.className = ''" name="phone">
+                <input 
+                    type="tel" 
+                    pattern="[0-9]{10,11}" 
+                    maxlength="11" 
+                    inputmode="numeric" 
+                    placeholder="Phone Number" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                    name="phone">
             </div>
             <div class="mb-15">
                 <input type="text" placeholder="Matric Number" oninput="this.className = ''" name="matno">
             </div>
+            <!-- <div class="mb-15 radio-group">
+                  
+                <label for="direct-entry" class="radio-label"> <input type="radio" id="direct-entry" name="entry" value="direct-entry"/>DirectEntry</label>
+               
+                <label for="staylite" class="radio-label"> <input type="radio" id="staylite" name="entry" value="staylite"/>Staylite</label><br>
+             </div>
+             <div class="mb-15 radio-group">
+               
+                <label for="fulltime" class="radio-label"> <input type="radio"  name="student-type" value="fulltime"/>Fulltime</label>
+                
+                <label for="part-time" class="radio-label"><input type="radio" id="part-time" name="student-type" value="part-time"/>PartTimesss</label>
+             </div>
+         </div> -->
             <div class="mb-15 radio-group">
                 <label class="radio-label"><input type="radio" name="gender" value="male"> Male</label>
                 <label class="radio-label"><input type="radio" name="gender" value="female"> Female</label>
